@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Sharing App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
+        <h1 class="text-2xl font-bold text-center text-gray-800">Upload and Share Files</h1>
+        <p class="text-gray-600 text-center mt-2">Quickly share files with anyone using a sharable link.</p>
+
+        <!-- Upload Form -->
+        <form method="POST" enctype="multipart/form-data" class="mt-6">
+            <label for="file" class="block text-gray-700 font-medium mb-2">Choose a file to upload:</label>
+            <input type="file" name="file" id="file" class="block w-full text-gray-800 bg-gray-50 border border-gray-300 rounded-lg p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg">
+                Upload
+            </button>
+            <p class="text-gray-400 text-end mt-2">By Apurba Khanra</p>
+
+        </form>
+
+        <!-- Display the download link -->
+        {% if download_url %}
+        <div class="mt-6 p-4 bg-green-100 border border-green-300 rounded-lg">
+            <p class="text-green-700 font-medium">File uploaded successfully! Share this link:</p>
+            <a href="{{ download_url }}" class="text-blue-600 hover:underline break-all">{{ download_url }}</a>
+        </div>
+        <div class="mt-6 p-4 bg-red-100 border border-red-300 rounded-lg">
+            <p class="text-red-700 font-medium">NOTE : Link will expire in 10 mins</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
